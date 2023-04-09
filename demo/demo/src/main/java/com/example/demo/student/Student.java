@@ -7,6 +7,11 @@ import java.time.LocalDate;
 @Table
 public class Student {
     @Id
+    @SequenceGenerator(
+            name = "student_sequence",
+            sequenceName = "student_sequence",
+            allocationSize = 1
+    )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "student_sequence"
@@ -15,6 +20,7 @@ public class Student {
     private String name;
     private String email;
     private LocalDate dob;
+    @Transient
     private Integer age;
 
     public Student() {
